@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login to Sports League Management System. Official student portal for KL University.">
+  <title>Login - Sports League Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page-body">
+
+  <div class="login-wrapper">
+    <!-- Header with Sports Icon and Project Name -->
+    <div class="login-header">
+      <div class="login-brand-icon">🏆</div>
+      <h1>Sports League Management</h1>
+      <p>KL University Sports Council • Student Admin Portal</p>
+    </div>
+
+    <!-- Error message alert box (Hidden by default, shown on invalid login) -->
+    <div id="loginErrorMsg" class="login-error-msg" role="alert">
+      Invalid email or password. Please try again.
+    </div>
+
+    <!-- Main Login Form -->
+    <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+      <!-- Email / Username Input -->
+      <div class="form-group">
+        <label for="loginEmail" class="form-label">Email or Username</label>
+        <input 
+          type="email" 
+          id="loginEmail" 
+          class="form-control" 
+          placeholder="Enter your email or username" 
+          required 
+          autocomplete="username"
+        >
+      </div>
+
+      <!-- Password Input with Show/Hide Toggle -->
+      <div class="form-group">
+        <label for="loginPassword" class="form-label">Password</label>
+        <div class="password-input-group">
+          <input 
+            type="password" 
+            id="loginPassword" 
+            class="form-control" 
+            placeholder="Enter your password" 
+            required 
+            autocomplete="current-password"
+          >
+          <button 
+            type="button" 
+            class="toggle-password-btn" 
+            id="togglePasswordBtn" 
+            onclick="togglePasswordVisibility('loginPassword', this)" 
+            title="Show or hide password"
+          >
+            👁️ Show
+          </button>
+        </div>
+      </div>
+
+      <!-- Remember Me & Forgot Password Row -->
+      <div class="login-options-row">
+        <label class="remember-me">
+          <input type="checkbox" id="rememberMeCheckbox" checked>
+          <span>Remember Me</span>
+        </label>
+        <a href="javascript:void(0)" class="forgot-password-link" onclick="handleForgotPassword()">Forgot Password?</a>
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" class="btn btn-primary login-btn" id="loginBtn">
+        🚀 Log In to Dashboard
+      </button>
+
+      <!-- Create Account Modal Trigger -->
+      <div class="create-account-text">
+        Don't have an account? 
+        <a href="javascript:void(0)" class="create-account-link" onclick="openModal('createAccountModal')">Create Account</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Create Account Modal (Vanilla JS Popup) -->
+  <div class="modal-overlay" id="createAccountModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Create Student Account</h3>
+        <button class="modal-close-btn" onclick="closeModal('createAccountModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <!-- Registration Error Alert Box -->
+        <div id="regErrorMsg" class="login-error-msg" style="display: none; margin-bottom: 1.25rem;" role="alert"></div>
+
+        <form id="registerForm" onsubmit="handleRegisterUser(event)">
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input type="text" id="regName" class="form-control" placeholder="e.g. Rahul Sharma" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" id="regEmail" class="form-control" placeholder="e.g. rahul@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Department / Branch</label>
+            <input type="text" id="regDept" class="form-control" placeholder="e.g. Computer Science (CSE)">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password *</label>
+            <input type="password" id="regPassword" class="form-control" placeholder="Create a password (min 4 characters)" required minlength="4">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirm Password *</label>
+            <input type="password" id="regConfirmPassword" class="form-control" placeholder="Confirm your password" required minlength="4">
+          </div>
+          <div class="modal-footer" style="padding: 0; margin-top: 1.5rem; border: none;">
+            <button type="button" class="btn btn-outline" onclick="closeModal('createAccountModal')">Cancel</button>
+            <button type="submit" class="btn btn-primary">Register Account</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+  <script>
+    // Additional simple helper function for forgot password
+    function handleForgotPassword() {
+      alert("Password Reset:\nPlease contact the Sports Council Administrator to reset your password.");
+    }
+  </script>
+</body>
+</html>

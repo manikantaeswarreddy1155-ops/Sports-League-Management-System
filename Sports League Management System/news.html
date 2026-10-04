@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sports News - Sports League Management System. Latest match highlights, tournament reports, and player achievements.">
+  <title>News - Sports League Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">🏆</div>
+          <div class="brand-text">
+            <h2>Sports League</h2>
+            <span>KL University MS</span>
+          </div>
+        </div>
+        <button class="close-sidebar-btn" onclick="closeMobileSidebar()">✕</button>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-label">Navigation</li>
+        <li class="sidebar-item"><a href="dashboard.html" class="sidebar-link"><span class="sidebar-icon">📊</span> Dashboard</a></li>
+        <li class="sidebar-item"><a href="leagues.html" class="sidebar-link"><span class="sidebar-icon">🏆</span> Leagues</a></li>
+        <li class="sidebar-item"><a href="teams.html" class="sidebar-link"><span class="sidebar-icon">🛡️</span> Teams</a></li>
+        <li class="sidebar-item"><a href="players.html" class="sidebar-link"><span class="sidebar-icon">🏃</span> Players</a></li>
+        <li class="sidebar-item"><a href="fixtures.html" class="sidebar-link"><span class="sidebar-icon">📅</span> Fixtures</a></li>
+        <li class="sidebar-item"><a href="live-scores.html" class="sidebar-link"><span class="sidebar-icon">🔴</span> Live Scores <span class="sidebar-badge pulse">LIVE</span></a></li>
+        <li class="sidebar-item"><a href="standings.html" class="sidebar-link"><span class="sidebar-icon">🏅</span> Standings</a></li>
+        <li class="sidebar-item"><a href="tickets.html" class="sidebar-link"><span class="sidebar-icon">🎟️</span> Tickets</a></li>
+        <li class="sidebar-item"><a href="news.html" class="sidebar-link active"><span class="sidebar-icon">📰</span> News</a></li>
+        <li class="sidebar-item"><a href="notifications.html" class="sidebar-link"><span class="sidebar-icon">🔔</span> Notifications <span class="sidebar-badge notification-count-badge">3</span></a></li>
+        <li class="sidebar-item"><a href="profile.html" class="sidebar-link"><span class="sidebar-icon">👤</span> Profile</a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar-sm user-avatar-circle">M</div>
+          <div class="user-details-sm">
+            <div class="user-name user-display-name">Manikanta</div>
+            <div class="user-role user-display-role">Sports Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn" onclick="handleLogout()">🚪 Logout</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="toggle-sidebar-btn" onclick="toggleMobileSidebar()">☰</button>
+          <h2 class="page-heading">Sports News & Bulletins</h2>
+        </div>
+        <div class="navbar-right">
+          <a href="notifications.html" class="nav-link-btn">🔔<span class="nav-badge-count notification-count-badge">3</span></a>
+          <a href="profile.html" class="user-profile-badge">
+            <div class="avatar-circle user-avatar-circle">M</div>
+            <span class="name user-display-name">Manikanta</span>
+          </a>
+        </div>
+      </header>
+
+      <main class="page-body">
+        <div class="page-header-action">
+          <div>
+            <h2 style="font-size: 1.4rem;">Campus Sports Bulletin</h2>
+            <p class="page-subtext">Tournament highlights, breaking match results, and sports council announcements.</p>
+          </div>
+        </div>
+
+        <!-- News Cards Grid -->
+        <div class="news-grid" id="newsGrid">
+          <!-- Populated dynamically by js/script.js -->
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- News Article Modal (Vanilla JS Popup) -->
+  <div class="modal-overlay" id="newsDetailsModal">
+    <div class="modal-box" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 id="newsModalTitle">Sports Story</h3>
+        <button class="modal-close-btn" onclick="closeModal('newsDetailsModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="width: 100%; height: 240px; overflow: hidden; border-radius: var(--radius-sm); margin-bottom: 1rem; background: #e2e8f0;">
+          <img id="newsModalImage" src="" alt="Sports article photo" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div id="newsModalDate" style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;"></div>
+        <p id="newsModalBody" style="line-height: 1.6; color: var(--text-main); font-size: 0.95rem;"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('newsDetailsModal')">Close Story</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

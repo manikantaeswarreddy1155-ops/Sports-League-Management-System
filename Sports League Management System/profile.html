@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="User Profile - Sports League Management System. View and update student administrator details.">
+  <title>User Profile - Sports League Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">🏆</div>
+          <div class="brand-text">
+            <h2>Sports League</h2>
+            <span>KL University MS</span>
+          </div>
+        </div>
+        <button class="close-sidebar-btn" onclick="closeMobileSidebar()">✕</button>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-label">Navigation</li>
+        <li class="sidebar-item"><a href="dashboard.html" class="sidebar-link"><span class="sidebar-icon">📊</span> Dashboard</a></li>
+        <li class="sidebar-item"><a href="leagues.html" class="sidebar-link"><span class="sidebar-icon">🏆</span> Leagues</a></li>
+        <li class="sidebar-item"><a href="teams.html" class="sidebar-link"><span class="sidebar-icon">🛡️</span> Teams</a></li>
+        <li class="sidebar-item"><a href="players.html" class="sidebar-link"><span class="sidebar-icon">🏃</span> Players</a></li>
+        <li class="sidebar-item"><a href="fixtures.html" class="sidebar-link"><span class="sidebar-icon">📅</span> Fixtures</a></li>
+        <li class="sidebar-item"><a href="live-scores.html" class="sidebar-link"><span class="sidebar-icon">🔴</span> Live Scores <span class="sidebar-badge pulse">LIVE</span></a></li>
+        <li class="sidebar-item"><a href="standings.html" class="sidebar-link"><span class="sidebar-icon">🏅</span> Standings</a></li>
+        <li class="sidebar-item"><a href="tickets.html" class="sidebar-link"><span class="sidebar-icon">🎟️</span> Tickets</a></li>
+        <li class="sidebar-item"><a href="news.html" class="sidebar-link"><span class="sidebar-icon">📰</span> News</a></li>
+        <li class="sidebar-item"><a href="notifications.html" class="sidebar-link"><span class="sidebar-icon">🔔</span> Notifications <span class="sidebar-badge notification-count-badge">3</span></a></li>
+        <li class="sidebar-item"><a href="profile.html" class="sidebar-link active"><span class="sidebar-icon">👤</span> Profile</a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar-sm user-avatar-circle">M</div>
+          <div class="user-details-sm">
+            <div class="user-name user-display-name">Manikanta</div>
+            <div class="user-role user-display-role">Sports Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn" onclick="handleLogout()">🚪 Logout</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="toggle-sidebar-btn" onclick="toggleMobileSidebar()">☰</button>
+          <h2 class="page-heading">My Profile</h2>
+        </div>
+        <div class="navbar-right">
+          <a href="notifications.html" class="nav-link-btn">🔔<span class="nav-badge-count notification-count-badge">3</span></a>
+          <a href="profile.html" class="user-profile-badge">
+            <div class="avatar-circle user-avatar-circle">M</div>
+            <span class="name user-display-name">Manikanta</span>
+          </a>
+        </div>
+      </header>
+
+      <main class="page-body">
+        <div class="page-header-action">
+          <div>
+            <h2 style="font-size: 1.4rem;">Student Administrator Profile</h2>
+            <p class="page-subtext">Manage personal contact info, college credentials, and sports council designation.</p>
+          </div>
+        </div>
+
+        <div class="profile-container">
+          <!-- Profile View Card -->
+          <div class="profile-card">
+            <div class="profile-avatar-large user-avatar-circle">M</div>
+            <h3 class="profile-name" id="profileCardName">Manikanta</h3>
+            <span class="profile-badge-role" id="profileCardRole">Sports Council Administrator</span>
+
+            <div class="profile-info-list">
+              <div class="profile-info-row">
+                <span class="label">Email:</span>
+                <span class="val" id="profileCardEmail">admin@sports.com</span>
+              </div>
+              <div class="profile-info-row">
+                <span class="label">Phone:</span>
+                <span class="val" id="profileCardPhone">+91 98765 43210</span>
+              </div>
+              <div class="profile-info-row">
+                <span class="label">University:</span>
+                <span class="val" id="profileCardCollege">KL University, Vaddeswaram</span>
+              </div>
+              <div class="profile-info-row">
+                <span class="label">Department:</span>
+                <span class="val" id="profileCardDept">Computer Science (CSE)</span>
+              </div>
+              <div class="profile-info-row">
+                <span class="label">Student ID:</span>
+                <span class="val" id="profileCardStudentId">2200030001</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+              <button class="btn btn-outline btn-sm" style="width: 100%;" onclick="resetAllData()">🔄 Reset All System Data</button>
+            </div>
+          </div>
+
+          <!-- Edit Profile Form Card -->
+          <div class="card-box">
+            <div class="card-box-header">
+              <h3><span>✏️</span> Edit Profile Information</h3>
+              <span class="badge badge-sport">Student Admin Details</span>
+            </div>
+
+            <form id="editProfileForm">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" id="profileInputName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Official Email</label>
+                  <input type="email" id="profileInputEmail" class="form-control" required>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label">Phone Number</label>
+                  <input type="text" id="profileInputPhone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Council Role / Designation</label>
+                  <input type="text" id="profileInputRole" class="form-control" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">University / College Name</label>
+                <input type="text" id="profileInputCollege" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Department / Branch</label>
+                <input type="text" id="profileInputDept" class="form-control" required>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                <button type="submit" class="btn btn-primary" style="padding: 0.75rem 1.75rem;">
+                  💾 Save Profile Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

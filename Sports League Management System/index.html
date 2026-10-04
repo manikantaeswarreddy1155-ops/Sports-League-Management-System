@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sports League Management System - College sports portal for KL University. Manage leagues, teams, players, fixtures, live scores, and tickets.">
+  <title>Sports League Management System | KL University</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background: linear-gradient(135deg, #0b132b 0%, #1c2541 60%, #1e3a8a 100%); color: white; min-height: 100vh;">
+
+  <!-- Simple Navigation Bar -->
+  <nav style="display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <div style="width: 42px; height: 42px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem;">🏆</div>
+      <div>
+        <h2 style="font-size: 1.15rem; margin: 0; font-weight: 800;">Sports League Management System</h2>
+        <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">KL University • Department of Physical Education</span>
+      </div>
+    </div>
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      <a href="login.html" class="btn btn-primary" style="padding: 0.55rem 1.25rem;">🔐 Login Portal</a>
+      <a href="dashboard.html" class="btn btn-accent" style="padding: 0.55rem 1.25rem;">⚡ Direct Dashboard Demo</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <main style="max-width: 1200px; margin: 2.5rem auto; padding: 0 1.5rem;">
+    <div class="hero-banner-container" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);">
+      <div class="hero-text-content">
+        <span class="badge" style="background: #fbbf24; color: #78350f; margin-bottom: 1rem;">🏆 College Championship 2026</span>
+        <h1>Inter-Collegiate Sports League Portal</h1>
+        <p>
+          Welcome to the official frontend portal of the Sports League Management System. 
+          Manage Cricket, Football, and Basketball tournaments, track real-time scores, 
+          view player rosters, book student match tickets, and stay updated with campus sports news.
+        </p>
+        <div class="hero-actions">
+          <a href="login.html" class="btn btn-accent" style="font-size: 1rem; padding: 0.75rem 1.5rem;">🚀 Launch Login Page</a>
+          <a href="live-scores.html" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white; padding: 0.75rem 1.5rem;">🔴 View Live Match</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <img src="assets/images/banner.jpg" alt="University Sports Championship 2026">
+      </div>
+    </div>
+
+    <!-- Quick Features Showcase Cards -->
+    <h3 style="font-size: 1.35rem; margin-bottom: 1.25rem; font-weight: 700; color: #f8fafc;">Key Management Modules</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+      
+      <a href="leagues.html" class="card-box" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.1); color: white; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏆</div>
+        <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">League Management</h4>
+        <p style="font-size: 0.85rem; color: #cbd5e1;">Register collegiate leagues, manage seasons, and monitor multi-sport categories.</p>
+      </a>
+
+      <a href="teams.html" class="card-box" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.1); color: white; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🛡️</div>
+        <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Teams & Captains</h4>
+        <p style="font-size: 0.85rem; color: #cbd5e1;">Browse collegiate rosters (KL Warriors, Andhra Strikers, Campus Kings) with win/loss records.</p>
+      </a>
+
+      <a href="players.html" class="card-box" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.1); color: white; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏃</div>
+        <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Player Profiles</h4>
+        <p style="font-size: 0.85rem; color: #cbd5e1;">Real-time search, jersey numbers, strike rates, goals scored, and player statistics.</p>
+      </a>
+
+      <a href="live-scores.html" class="card-box" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.1); color: white; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔴</div>
+        <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Live Score Simulator</h4>
+        <p style="font-size: 0.85rem; color: #cbd5e1;">Interactive scorecard: simulate boundaries, sixes, and wickets with live ball-by-ball commentary.</p>
+      </a>
+
+      <a href="standings.html" class="card-box" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.1); color: white; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏅</div>
+        <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Points Table</h4>
+        <p style="font-size: 0.85rem; color: #cbd5e1;">Track standings, games played, wins, net run rates, and recent team form.</p>
+      </a>
+
+      <a href="tickets.html" class="card-box" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.1); color: white; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎟️</div>
+        <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Ticket Booking</h4>
+        <p style="font-size: 0.85rem; color: #cbd5e1;">Instant booking with real-time price calculator and generated e-pass barcodes.</p>
+      </a>
+    </div>
+
+    <!-- Student Project Information Footer -->
+    <div style="background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 1.5rem; text-align: center; border: 1px solid rgba(255, 255, 255, 0.08);">
+      <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 0.35rem;">
+        🎓 <strong>B.Tech College Project Demonstration</strong> • Built with pure HTML5, CSS3, and Vanilla JavaScript.
+      </p>
+      <p style="font-size: 0.8rem; color: #64748b;">
+        Student Admin: Manikanta (ID: 2200030001) • Department of Computer Science & Engineering
+      </p>
+      <div style="margin-top: 1rem;">
+        <button class="btn btn-outline btn-sm" style="color: #cbd5e1; border-color: rgba(255,255,255,0.2);" onclick="resetAllData()">🔄 Reset Demo Sample Data</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

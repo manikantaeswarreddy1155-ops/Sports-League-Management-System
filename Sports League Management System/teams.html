@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage University Sports Teams - Captains, coaches, rosters, and win/loss records.">
+  <title>Teams - Sports League Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">🏆</div>
+          <div class="brand-text">
+            <h2>Sports League</h2>
+            <span>KL University MS</span>
+          </div>
+        </div>
+        <button class="close-sidebar-btn" onclick="closeMobileSidebar()">✕</button>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-label">Navigation</li>
+        <li class="sidebar-item"><a href="dashboard.html" class="sidebar-link"><span class="sidebar-icon">📊</span> Dashboard</a></li>
+        <li class="sidebar-item"><a href="leagues.html" class="sidebar-link"><span class="sidebar-icon">🏆</span> Leagues</a></li>
+        <li class="sidebar-item"><a href="teams.html" class="sidebar-link active"><span class="sidebar-icon">🛡️</span> Teams</a></li>
+        <li class="sidebar-item"><a href="players.html" class="sidebar-link"><span class="sidebar-icon">🏃</span> Players</a></li>
+        <li class="sidebar-item"><a href="fixtures.html" class="sidebar-link"><span class="sidebar-icon">📅</span> Fixtures</a></li>
+        <li class="sidebar-item"><a href="live-scores.html" class="sidebar-link"><span class="sidebar-icon">🔴</span> Live Scores <span class="sidebar-badge pulse">LIVE</span></a></li>
+        <li class="sidebar-item"><a href="standings.html" class="sidebar-link"><span class="sidebar-icon">🏅</span> Standings</a></li>
+        <li class="sidebar-item"><a href="tickets.html" class="sidebar-link"><span class="sidebar-icon">🎟️</span> Tickets</a></li>
+        <li class="sidebar-item"><a href="news.html" class="sidebar-link"><span class="sidebar-icon">📰</span> News</a></li>
+        <li class="sidebar-item"><a href="notifications.html" class="sidebar-link"><span class="sidebar-icon">🔔</span> Notifications <span class="sidebar-badge notification-count-badge">3</span></a></li>
+        <li class="sidebar-item"><a href="profile.html" class="sidebar-link"><span class="sidebar-icon">👤</span> Profile</a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar-sm user-avatar-circle">M</div>
+          <div class="user-details-sm">
+            <div class="user-name user-display-name">Manikanta</div>
+            <div class="user-role user-display-role">Sports Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn" onclick="handleLogout()">🚪 Logout</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="toggle-sidebar-btn" onclick="toggleMobileSidebar()">☰</button>
+          <h2 class="page-heading">College Teams</h2>
+        </div>
+        <div class="navbar-right">
+          <a href="notifications.html" class="nav-link-btn">🔔<span class="nav-badge-count notification-count-badge">3</span></a>
+          <a href="profile.html" class="user-profile-badge">
+            <div class="avatar-circle user-avatar-circle">M</div>
+            <span class="name user-display-name">Manikanta</span>
+          </a>
+        </div>
+      </header>
+
+      <main class="page-body">
+        <div class="page-header-action">
+          <div>
+            <h2 style="font-size: 1.4rem;">Department & Collegiate Teams</h2>
+            <p class="page-subtext">View team rosters, captains, coaches, and season win/loss records.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openModal('addTeamModal')">➕ Add Team</button>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="search-filter-bar">
+          <select id="teamSportFilter" class="filter-select" onchange="renderTeams(this.value)">
+            <option value="all">All Sports</option>
+            <option value="Cricket">Cricket</option>
+            <option value="Football">Football</option>
+            <option value="Basketball">Basketball</option>
+          </select>
+        </div>
+
+        <!-- Teams Grid Cards -->
+        <div class="cards-grid" id="teamsGrid">
+          <!-- Populated dynamically by js/script.js -->
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add Team Modal -->
+  <div class="modal-overlay" id="addTeamModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>🛡️ Register New Team</h3>
+        <button class="modal-close-btn" onclick="closeModal('addTeamModal')">✕</button>
+      </div>
+      <form id="addTeamForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Team Name</label>
+            <input type="text" id="teamName" class="form-control" placeholder="e.g. KL Warriors" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sport Category</label>
+            <select id="teamSport" class="form-control">
+              <option value="Cricket">Cricket</option>
+              <option value="Football">Football</option>
+              <option value="Basketball">Basketball</option>
+              <option value="Badminton">Badminton</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Team Captain</label>
+            <input type="text" id="teamCaptain" class="form-control" placeholder="e.g. Rahul Sharma" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Head Coach</label>
+            <input type="text" id="teamCoach" class="form-control" placeholder="e.g. Mr. K. Rama Rao" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Number of Registered Players</label>
+            <input type="number" id="teamPlayersCount" class="form-control" value="15" min="5" max="30" required>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Wins</label>
+              <input type="number" id="teamWins" class="form-control" value="0" min="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Losses</label>
+              <input type="number" id="teamLosses" class="form-control" value="0" min="0">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('addTeamModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Team</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

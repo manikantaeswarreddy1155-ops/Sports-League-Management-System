@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sports League Management System Dashboard - Monitor collegiate leagues, matches, players, and live scores.">
+  <title>Dashboard - Sports League Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">🏆</div>
+          <div class="brand-text">
+            <h2>Sports League</h2>
+            <span>KL University MS</span>
+          </div>
+        </div>
+        <button class="close-sidebar-btn" onclick="closeMobileSidebar()">✕</button>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-label">Navigation</li>
+        <li class="sidebar-item">
+          <a href="dashboard.html" class="sidebar-link active">
+            <span class="sidebar-icon">📊</span> Dashboard
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="leagues.html" class="sidebar-link">
+            <span class="sidebar-icon">🏆</span> Leagues
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="teams.html" class="sidebar-link">
+            <span class="sidebar-icon">🛡️</span> Teams
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="players.html" class="sidebar-link">
+            <span class="sidebar-icon">🏃</span> Players
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="fixtures.html" class="sidebar-link">
+            <span class="sidebar-icon">📅</span> Fixtures
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="live-scores.html" class="sidebar-link">
+            <span class="sidebar-icon">🔴</span> Live Scores
+            <span class="sidebar-badge pulse">LIVE</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="standings.html" class="sidebar-link">
+            <span class="sidebar-icon">🏅</span> Standings
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="tickets.html" class="sidebar-link">
+            <span class="sidebar-icon">🎟️</span> Tickets
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="news.html" class="sidebar-link">
+            <span class="sidebar-icon">📰</span> News
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="notifications.html" class="sidebar-link">
+            <span class="sidebar-icon">🔔</span> Notifications
+            <span class="sidebar-badge notification-count-badge">3</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="profile.html" class="sidebar-link">
+            <span class="sidebar-icon">👤</span> Profile
+          </a>
+        </li>
+      </ul>
+
+      <!-- Sidebar User Preview & Logout -->
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar-sm user-avatar-circle">M</div>
+          <div class="user-details-sm">
+            <div class="user-name user-display-name">Manikanta</div>
+            <div class="user-role user-display-role">Sports Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn" onclick="handleLogout()">🚪 Logout</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper">
+      <!-- TOP NAVBAR -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="toggle-sidebar-btn" onclick="toggleMobileSidebar()" title="Toggle Sidebar">☰</button>
+          <h2 class="page-heading">Dashboard Overview</h2>
+        </div>
+        <div class="navbar-right">
+          <a href="notifications.html" class="nav-link-btn" title="View Notifications">
+            🔔
+            <span class="nav-badge-count notification-count-badge">3</span>
+          </a>
+          <a href="profile.html" class="user-profile-badge" title="View Profile">
+            <div class="avatar-circle user-avatar-circle">M</div>
+            <span class="name user-display-name">Manikanta</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- PAGE BODY -->
+      <main class="page-body">
+        
+        <!-- Welcome Banner -->
+        <div style="background: linear-gradient(135deg, #1e3a8a, #2563eb); border-radius: var(--radius-md); padding: 1.5rem 1.75rem; color: white; margin-bottom: 1.75rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 style="font-size: 1.4rem; margin-bottom: 0.25rem;">Welcome back, <span class="user-display-name">Manikanta</span>! 👋</h2>
+            <p style="color: #bfdbfe; font-size: 0.92rem;">KL University Inter-Department League 2026 is currently underway. Check today's matches and live scorecards.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="live-scores.html" class="btn btn-accent">🔴 Watch Live (145/4)</a>
+            <a href="fixtures.html" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.4);">📅 View Schedule</a>
+          </div>
+        </div>
+
+        <!-- STAT CARDS (6 METRICS) -->
+        <div class="stat-cards-grid">
+          <!-- Total Leagues -->
+          <div class="stat-card">
+            <div class="stat-info">
+              <h4>Total Leagues</h4>
+              <div class="stat-number" id="dashTotalLeagues">4</div>
+            </div>
+            <div class="stat-icon blue">🏆</div>
+          </div>
+
+          <!-- Total Teams -->
+          <div class="stat-card">
+            <div class="stat-info">
+              <h4>Total Teams</h4>
+              <div class="stat-number" id="dashTotalTeams">6</div>
+            </div>
+            <div class="stat-icon gold">🛡️</div>
+          </div>
+
+          <!-- Total Players -->
+          <div class="stat-card">
+            <div class="stat-info">
+              <h4>Total Players</h4>
+              <div class="stat-number" id="dashTotalPlayers">8</div>
+            </div>
+            <div class="stat-icon purple">🏃</div>
+          </div>
+
+          <!-- Upcoming Matches -->
+          <div class="stat-card">
+            <div class="stat-info">
+              <h4>Upcoming Matches</h4>
+              <div class="stat-number" id="dashUpcomingMatches">5</div>
+            </div>
+            <div class="stat-icon teal">📅</div>
+          </div>
+
+          <!-- Live Matches -->
+          <div class="stat-card">
+            <div class="stat-info">
+              <h4>Live Matches</h4>
+              <div class="stat-number" style="color: var(--live-red);" id="dashLiveMatches">1 LIVE</div>
+            </div>
+            <div class="stat-icon red">🔴</div>
+          </div>
+
+          <!-- Tickets Booked -->
+          <div class="stat-card">
+            <div class="stat-info">
+              <h4>Tickets Booked</h4>
+              <div class="stat-number" id="dashTicketsBooked">5</div>
+            </div>
+            <div class="stat-icon green">🎟️</div>
+          </div>
+        </div>
+
+        <!-- TWO COLUMN DASHBOARD SECTION -->
+        <div class="dashboard-grid-2">
+          
+          <!-- Upcoming Matches Widget -->
+          <div class="card-box">
+            <div class="card-box-header">
+              <h3><span>📅</span> Upcoming Matches</h3>
+              <a href="fixtures.html" class="btn btn-outline btn-sm">View All &rarr;</a>
+            </div>
+            <div id="dashUpcomingList">
+              <!-- Dynamically populated by js/script.js -->
+            </div>
+          </div>
+
+          <!-- Recent Results Widget -->
+          <div class="card-box">
+            <div class="card-box-header">
+              <h3><span>⚡</span> Recent Match Results</h3>
+              <span class="badge badge-completed">Finished Matches</span>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <!-- Result 1 (Basketball) -->
+              <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem;">
+                  <span class="badge badge-sport">Basketball Trophy</span>
+                  <span>Final Result • Oct 01, 2026</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-weight: 700;">
+                  <span>Coastal Titans 🏀</span>
+                  <span style="background: #e2e8f0; padding: 2px 10px; border-radius: 6px; font-size: 1.05rem; color: var(--primary);">120 - 110</span>
+                  <span>Royal Challengers</span>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--success); margin-top: 0.4rem; font-weight: 600;">
+                  🎉 Coastal Titans won by 10 points
+                </div>
+              </div>
+
+              <!-- Result 2 (Cricket) -->
+              <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem;">
+                  <span class="badge badge-sport">Cricket UCL</span>
+                  <span>Oct 02, 2026</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-weight: 700;">
+                  <span>KL Warriors 🏏</span>
+                  <span style="background: #e2e8f0; padding: 2px 10px; border-radius: 6px; font-size: 1.05rem; color: var(--primary);">165/6 - 158/9</span>
+                  <span>Campus Kings</span>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--success); margin-top: 0.4rem; font-weight: 600;">
+                  🎉 KL Warriors won by 7 runs (Player of Match: Rahul Sharma)
+                </div>
+              </div>
+
+              <!-- Result 3 (Football) -->
+              <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem;">
+                  <span class="badge badge-sport">Football CFC</span>
+                  <span>Sep 30, 2026</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-weight: 700;">
+                  <span>Campus Kings ⚽</span>
+                  <span style="background: #e2e8f0; padding: 2px 10px; border-radius: 6px; font-size: 1.05rem; color: var(--primary);">2 - 1</span>
+                  <span>Rising Stars</span>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--success); margin-top: 0.4rem; font-weight: 600;">
+                  🎉 Campus Kings won with 90' minute goal
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- LOWER SECTION: STANDINGS TABLE & LATEST NEWS -->
+        <div class="dashboard-grid-2">
+          
+          <!-- Current Standings Table Widget -->
+          <div class="card-box">
+            <div class="card-box-header">
+              <h3><span>🏅</span> Current Standings</h3>
+              <a href="standings.html" class="btn btn-outline btn-sm">Full Points Table &rarr;</a>
+            </div>
+            <div class="table-responsive">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>PTS</th>
+                  </tr>
+                </thead>
+                <tbody id="dashStandingsTable">
+                  <!-- Populated dynamically by js/script.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Latest News Cards Widget -->
+          <div class="card-box">
+            <div class="card-box-header">
+              <h3><span>📰</span> Latest Sports News</h3>
+              <a href="news.html" class="btn btn-outline btn-sm">All News &rarr;</a>
+            </div>
+            <div id="dashNewsCards" style="display: flex; flex-direction: column; gap: 1rem;">
+              <!-- Populated dynamically by js/script.js -->
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+</body>
+</html>

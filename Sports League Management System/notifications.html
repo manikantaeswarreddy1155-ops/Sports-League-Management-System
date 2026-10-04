@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Notifications & Alerts - Sports League Management System. Stay notified about match schedules and ticket passes.">
+  <title>Notifications - Sports League Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">🏆</div>
+          <div class="brand-text">
+            <h2>Sports League</h2>
+            <span>KL University MS</span>
+          </div>
+        </div>
+        <button class="close-sidebar-btn" onclick="closeMobileSidebar()">✕</button>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-label">Navigation</li>
+        <li class="sidebar-item"><a href="dashboard.html" class="sidebar-link"><span class="sidebar-icon">📊</span> Dashboard</a></li>
+        <li class="sidebar-item"><a href="leagues.html" class="sidebar-link"><span class="sidebar-icon">🏆</span> Leagues</a></li>
+        <li class="sidebar-item"><a href="teams.html" class="sidebar-link"><span class="sidebar-icon">🛡️</span> Teams</a></li>
+        <li class="sidebar-item"><a href="players.html" class="sidebar-link"><span class="sidebar-icon">🏃</span> Players</a></li>
+        <li class="sidebar-item"><a href="fixtures.html" class="sidebar-link"><span class="sidebar-icon">📅</span> Fixtures</a></li>
+        <li class="sidebar-item"><a href="live-scores.html" class="sidebar-link"><span class="sidebar-icon">🔴</span> Live Scores <span class="sidebar-badge pulse">LIVE</span></a></li>
+        <li class="sidebar-item"><a href="standings.html" class="sidebar-link"><span class="sidebar-icon">🏅</span> Standings</a></li>
+        <li class="sidebar-item"><a href="tickets.html" class="sidebar-link"><span class="sidebar-icon">🎟️</span> Tickets</a></li>
+        <li class="sidebar-item"><a href="news.html" class="sidebar-link"><span class="sidebar-icon">📰</span> News</a></li>
+        <li class="sidebar-item"><a href="notifications.html" class="sidebar-link active"><span class="sidebar-icon">🔔</span> Notifications <span class="sidebar-badge notification-count-badge">3</span></a></li>
+        <li class="sidebar-item"><a href="profile.html" class="sidebar-link"><span class="sidebar-icon">👤</span> Profile</a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar-sm user-avatar-circle">M</div>
+          <div class="user-details-sm">
+            <div class="user-name user-display-name">Manikanta</div>
+            <div class="user-role user-display-role">Sports Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn" onclick="handleLogout()">🚪 Logout</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="toggle-sidebar-btn" onclick="toggleMobileSidebar()">☰</button>
+          <h2 class="page-heading">Notifications & Alerts</h2>
+        </div>
+        <div class="navbar-right">
+          <a href="notifications.html" class="nav-link-btn">🔔<span class="nav-badge-count notification-count-badge">3</span></a>
+          <a href="profile.html" class="user-profile-badge">
+            <div class="avatar-circle user-avatar-circle">M</div>
+            <span class="name user-display-name">Manikanta</span>
+          </a>
+        </div>
+      </header>
+
+      <main class="page-body">
+        <div class="page-header-action">
+          <div>
+            <h2 style="font-size: 1.4rem;">Alerts & Activity Feed</h2>
+            <p class="page-subtext">Real-time alerts for match kick-offs, ticket bookings, venue changes, and tournament schedules.</p>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="markAllNotificationsRead()">✓ Mark All as Read</button>
+        </div>
+
+        <!-- Notifications List -->
+        <div id="notificationsList" style="max-width: 800px;">
+          <!-- Populated dynamically by js/script.js -->
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

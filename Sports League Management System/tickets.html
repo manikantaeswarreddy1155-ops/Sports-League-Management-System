@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ticket Booking - Sports League Management System. Book student passes for college sports tournaments.">
+  <title>Ticket Booking - Sports League Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">🏆</div>
+          <div class="brand-text">
+            <h2>Sports League</h2>
+            <span>KL University MS</span>
+          </div>
+        </div>
+        <button class="close-sidebar-btn" onclick="closeMobileSidebar()">✕</button>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-label">Navigation</li>
+        <li class="sidebar-item"><a href="dashboard.html" class="sidebar-link"><span class="sidebar-icon">📊</span> Dashboard</a></li>
+        <li class="sidebar-item"><a href="leagues.html" class="sidebar-link"><span class="sidebar-icon">🏆</span> Leagues</a></li>
+        <li class="sidebar-item"><a href="teams.html" class="sidebar-link"><span class="sidebar-icon">🛡️</span> Teams</a></li>
+        <li class="sidebar-item"><a href="players.html" class="sidebar-link"><span class="sidebar-icon">🏃</span> Players</a></li>
+        <li class="sidebar-item"><a href="fixtures.html" class="sidebar-link"><span class="sidebar-icon">📅</span> Fixtures</a></li>
+        <li class="sidebar-item"><a href="live-scores.html" class="sidebar-link"><span class="sidebar-icon">🔴</span> Live Scores <span class="sidebar-badge pulse">LIVE</span></a></li>
+        <li class="sidebar-item"><a href="standings.html" class="sidebar-link"><span class="sidebar-icon">🏅</span> Standings</a></li>
+        <li class="sidebar-item"><a href="tickets.html" class="sidebar-link active"><span class="sidebar-icon">🎟️</span> Tickets</a></li>
+        <li class="sidebar-item"><a href="news.html" class="sidebar-link"><span class="sidebar-icon">📰</span> News</a></li>
+        <li class="sidebar-item"><a href="notifications.html" class="sidebar-link"><span class="sidebar-icon">🔔</span> Notifications <span class="sidebar-badge notification-count-badge">3</span></a></li>
+        <li class="sidebar-item"><a href="profile.html" class="sidebar-link"><span class="sidebar-icon">👤</span> Profile</a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar-sm user-avatar-circle">M</div>
+          <div class="user-details-sm">
+            <div class="user-name user-display-name">Manikanta</div>
+            <div class="user-role user-display-role">Sports Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn" onclick="handleLogout()">🚪 Logout</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="toggle-sidebar-btn" onclick="toggleMobileSidebar()">☰</button>
+          <h2 class="page-heading">Match Ticket Booking</h2>
+        </div>
+        <div class="navbar-right">
+          <a href="notifications.html" class="nav-link-btn">🔔<span class="nav-badge-count notification-count-badge">3</span></a>
+          <a href="profile.html" class="user-profile-badge">
+            <div class="avatar-circle user-avatar-circle">M</div>
+            <span class="name user-display-name">Manikanta</span>
+          </a>
+        </div>
+      </header>
+
+      <main class="page-body">
+        <div class="page-header-action">
+          <div>
+            <h2 style="font-size: 1.4rem;">Student & Fan Entrance Passes</h2>
+            <p class="page-subtext">Book passes for upcoming cricket, football, and basketball matches. Instant booking ID generated via JavaScript.</p>
+          </div>
+        </div>
+
+        <div class="ticket-page-layout">
+          <!-- Ticket Booking Form Card -->
+          <div class="card-box">
+            <div class="card-box-header">
+              <h3><span>🎟️</span> Book Match Ticket</h3>
+              <span class="badge badge-active">Instant Pass</span>
+            </div>
+
+            <form id="ticketBookingForm">
+              <!-- Match Selector -->
+              <div class="form-group">
+                <label for="ticketMatchSelect" class="form-label">Select Match / Fixture</label>
+                <select id="ticketMatchSelect" class="form-control" required>
+                  <!-- Populated dynamically by js/script.js -->
+                </select>
+              </div>
+
+              <!-- Name & Email -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label for="ticketName" class="form-label">Attendee Full Name</label>
+                  <input type="text" id="ticketName" class="form-control" placeholder="e.g. Rahul Sharma" required>
+                </div>
+                <div class="form-group">
+                  <label for="ticketEmail" class="form-label">Student Email ID</label>
+                  <input type="email" id="ticketEmail" class="form-control" placeholder="e.g. rahul@kluniversity.in" required>
+                </div>
+              </div>
+
+              <!-- Ticket Type & Quantity -->
+              <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label for="ticketType" class="form-label">Ticket Tier</label>
+                  <select id="ticketType" class="form-control">
+                    <option value="Regular">Regular Stand (₹100)</option>
+                    <option value="Premium">Premium Pavilion (₹250)</option>
+                    <option value="VIP">VIP Lounge & Hospitality (₹500)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="ticketCount" class="form-label">Quantity</label>
+                  <input type="number" id="ticketCount" class="form-control" value="1" min="1" max="10" required>
+                </div>
+              </div>
+
+              <!-- Real-time Price Calculation Summary Box -->
+              <div class="ticket-calc-box">
+                <div class="ticket-calc-row">
+                  <span>Price per ticket:</span>
+                  <strong id="calcUnitPrice">₹100</strong>
+                </div>
+                <div class="ticket-calc-row">
+                  <span>Student Discount:</span>
+                  <span style="color: var(--success); font-weight: 600;">Waived (Free Entry Pass fee included)</span>
+                </div>
+                <div class="ticket-calc-row total">
+                  <span>Total Payable:</span>
+                  <span id="calcTotalAmount" style="color: var(--primary); font-size: 1.25rem;">₹100</span>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.8rem; font-size: 1rem;">
+                🎫 Confirm & Book Ticket
+              </button>
+            </form>
+          </div>
+
+          <!-- Recent Bookings List Card -->
+          <div class="card-box">
+            <div class="card-box-header">
+              <h3><span>📋</span> Recent Bookings & Passes</h3>
+              <span class="badge badge-completed">Verified</span>
+            </div>
+            <div id="recentBookingsList">
+              <!-- Populated dynamically by js/script.js -->
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Ticket Confirmation Modal with Digital E-Pass -->
+  <div class="modal-overlay" id="ticketSuccessModal">
+    <div class="modal-box" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3>🎉 Ticket Booked Successfully!</h3>
+        <button class="modal-close-btn" onclick="closeModal('ticketSuccessModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--success); font-weight: 600; margin-bottom: 1rem; font-size: 0.95rem;">
+          ✅ Your entry ticket has been confirmed and registered in the system.
+        </p>
+
+        <!-- Digital E-Ticket Preview -->
+        <div id="digitalTicketPreview"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeModal('ticketSuccessModal')">Close</button>
+        <button type="button" class="btn btn-primary" onclick="window.print()">🖨️ Print E-Pass</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
